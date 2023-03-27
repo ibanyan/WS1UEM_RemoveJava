@@ -1,0 +1,9 @@
+If you'd like to only remove some Java versions, you need to edit these two lines in the .ps file:
+
+$JavaInstalled = (Get-WmiObject Win32_Product -Filter 'name like "java%"')
+(Get-WmiObject Win32_Product -Filter 'name like "java%"').Uninstall()
+
+The important part is -Filter 'name like "java%"'
+By changing what is in the quotations, you can narrow down what you want to look for and uninstall.
+For example if you change whats inside the quotations to "Java 7%" then you are looking for and uninstalling all versions of Java 7 and lower.
+Remember to change both lines in the ps1 file.
